@@ -20,7 +20,6 @@ public class requestNetwork {
 
     static CustomDialog customDialog;
 
-
     /**
      * 不带入任何参数以及头部进行请求
      *
@@ -143,12 +142,6 @@ public class requestNetwork {
         if (isDialog) {
             showDialog(mContext);
         }
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                closeDialog();
-            }
-        }, 7000);
         RequestParams params = new RequestParams(url);
         params.setConnectTimeout(5000);
         if (addHeaderState) {
@@ -177,6 +170,12 @@ public class requestNetwork {
 
             }
         });
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                closeDialog();
+            }
+        }, 7000);
     }
 
 
@@ -198,12 +197,6 @@ public class requestNetwork {
         if (isDialog) {
             showDialog(mContext);
         }
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                closeDialog();
-            }
-        }, 7000);
         RequestParams params = new RequestParams(url);
         params.setConnectTimeout(5000);
         if (map.size() > 0) {
@@ -242,6 +235,13 @@ public class requestNetwork {
 
             }
         });
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                closeDialog();
+            }
+        }, 7000);
     }
 
     public interface MyHttpCallback {
