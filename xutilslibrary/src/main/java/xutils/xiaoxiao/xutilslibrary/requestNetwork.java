@@ -30,7 +30,7 @@ public class requestNetwork {
      * @param callback   回调方法
      * @param isDialog   是否显示等待动画
      */
-    public static void xutilsRequest(Context mContext, String url, final String identifier, HttpMethod method, final MyHttpCallback callback, final boolean isDialog) {
+    public static void xutilsRequest(final Context mContext, String url, final String identifier, HttpMethod method, final MyHttpCallback callback, final boolean isDialog) {
         if (isDialog) {
             showDialog(mContext);
         }
@@ -45,13 +45,13 @@ public class requestNetwork {
         x.http().request(method, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                callback.onSuccess(result, identifier);
+                callback.onSuccess(result, identifier,mContext);
                 closeDialog();
             }
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
-                callback.onError(ex.getMessage(), identifier);
+                callback.onError(ex.getMessage(), identifier,mContext);
             }
 
             @Override
@@ -78,7 +78,7 @@ public class requestNetwork {
      * @param callback   回调方法
      * @param isDialog   是否显示等待动画
      */
-    public static void xutilsRequest(Context mContext, String url, final String identifier, HttpMethod method, HashMap<String, Object> map, final MyHttpCallback callback, final boolean isDialog) {
+    public static void xutilsRequest(final Context mContext, String url, final String identifier, HttpMethod method, HashMap<String, Object> map, final MyHttpCallback callback, final boolean isDialog) {
         if (isDialog) {
             showDialog(mContext);
         }
@@ -103,13 +103,13 @@ public class requestNetwork {
         x.http().request(method, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                callback.onSuccess(result, identifier);
+                callback.onSuccess(result, identifier,mContext);
                 closeDialog();
             }
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
-                callback.onError(ex.getMessage(), identifier);
+                callback.onError(ex.getMessage(), identifier,mContext);
             }
 
             @Override
@@ -138,7 +138,7 @@ public class requestNetwork {
      * @param callback       回调方法
      * @param isDialog       是否显示等待动画
      */
-    public static void xutilsRequest(Context mContext, String url, final String identifier, HttpMethod method, final MyHttpCallback callback, final boolean isDialog, final boolean addHeaderState, final String addHeaderKey, final String addHeaderValue) {
+    public static void xutilsRequest(final Context mContext, String url, final String identifier, HttpMethod method, final MyHttpCallback callback, final boolean isDialog, final boolean addHeaderState, final String addHeaderKey, final String addHeaderValue) {
         if (isDialog) {
             showDialog(mContext);
         }
@@ -151,13 +151,13 @@ public class requestNetwork {
 
             @Override
             public void onSuccess(String result) {
-                callback.onSuccess(result, identifier);
+                callback.onSuccess(result, identifier,mContext);
                 closeDialog();
             }
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
-                callback.onError(ex.getMessage(), identifier);
+                callback.onError(ex.getMessage(), identifier,mContext);
             }
 
             @Override
@@ -193,7 +193,7 @@ public class requestNetwork {
      * @param callback       回调方法
      * @param isDialog       是否显示等待动画
      */
-    public static void xutilsRequest(Context mContext, String url, final String identifier, HttpMethod method, HashMap<String, Object> map, final MyHttpCallback callback, final boolean isDialog, final boolean addHeaderState, final String addHeaderKey, final String addHeaderValue) {
+    public static void xutilsRequest(final Context mContext, String url, final String identifier, HttpMethod method, HashMap<String, Object> map, final MyHttpCallback callback, final boolean isDialog, final boolean addHeaderState, final String addHeaderKey, final String addHeaderValue) {
         if (isDialog) {
             showDialog(mContext);
         }
@@ -216,13 +216,13 @@ public class requestNetwork {
 
             @Override
             public void onSuccess(String result) {
-                callback.onSuccess(result, identifier);
+                callback.onSuccess(result, identifier,mContext);
                 closeDialog();
             }
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
-                callback.onError(ex.getMessage(), identifier);
+                callback.onError(ex.getMessage(), identifier,mContext);
             }
 
             @Override
@@ -245,9 +245,9 @@ public class requestNetwork {
     }
 
     public interface MyHttpCallback {
-        void onSuccess(String result, String SuccessRequest);
+        void onSuccess(String result, String SuccessRequest,Context mContext);
 
-        void onError(String errorMsg, String ErrorRequest);
+        void onError(String errorMsg, String ErrorRequest,Context mContext);
     }
 
     /**
